@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 14th Birthday Cinta! 💖</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffeaa7 0%, #ff7675 100%);
+            font-family: 'Poppins', sans-serif;
+            color: #4a4a4a;
+            text-align: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Kelopak Hati Berjatuhan */
+        .heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 20px;
+            animation: fall linear infinite;
+            top: -10%;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            0% { top: -10%; transform: translateX(0) rotate(0deg); }
+            100% { top: 110%; transform: translateX(100px) rotate(360deg); }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(8px);
+            animation: popUp 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 10;
+            position: relative;
+            margin: 40px 0;
+        }
+
+        /* Tampilan Slider Foto */
+        .slider-container {
+            position: relative;
+            width: 190px;
+            height: 190px;
+            margin: 0 auto 25px auto;
+            overflow: hidden;
+            border-radius: 50%;
+            border: 4px solid #e84393;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+        }
+
+        .slider {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(232, 67, 147, 0.7);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 15;
+        }
+        .prev { left: 5px; }
+        .next { right: 5px; }
+
+        h1 {
+            color: #d63031;
+            font-size: 2.1rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        h2 {
+            color: #e84393;
+            font-size: 1.4rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        /* Area Mini Game */
+        .game-box {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed #e84393;
+            margin-top: 20px;
+        }
+
+        .game-box input {
+            width: 70px;
+            padding: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid #ff7675;
+            margin-right: 10px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff7675, #e84393);
+            color: white;
+            border: none;
+            padding: 12px 26px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(232, 67, 147, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.5);
+        }
+
+        #game-hint {
+            font-weight: bold;
+            color: #d63031;
+            margin-top: 12px;
+        }
+
+        /* Surat Rahasia Super Panjang */
+        #surat-cinta {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background: #fffbfb;
+            border-radius: 15px;
+            box-shadow: inset 0 0 15px rgba(232, 67, 147, 0.1);
+            text-align: left;
+            animation: fadeIn 1.5s ease;
+            border-left: 5px solid #e84393;
+        }
+
+        #surat-cinta p {
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            text-indent: 25px;
+            text-align: justify;
+        }
+
+        /* Animasi */
+        @keyframes popUp {
+            0% { transform: scale(0.7); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Slider Foto (3 Foto) -->
+        <div class="slider-container">
+            <button class="slide-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+            <div class="slider" id="slider">
+                <!-- SILAKAN GANTI DENGAN FOTO CINTA -->
+                <img src="foto1.jpg" alt="Foto Cinta 1">
+                <img src="foto2.jpg" alt="Foto Cinta 2">
+                <img src="foto3.jpg" alt="Foto Cinta 3">
+            </div>
+            <button class="slide-btn next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+
+        <h1>Selamat Ulang Tahun ke-14,</h1>
+        <h2>Cinta-ku Sayang ✨💖</h2>
+        
+        <p>Ada hari-hari yang biasa aja, tapi hari ini jadi luar biasa indah karena hari ini adalah hari kelahiran orang yang paling berharga di hidupku.</p>
+        
+        <!-- Bagian Mini Game -->
+        <div class="game-box" id="game-section">
+            <h3>Tantangan Khusus Cinta 🎮</h3>
+            <p>Eits, surat manisnya masih dikunci nih! Coba tebak angka keberuntungan antara <b>1 sampai 14</b> untuk membukanya.</p>
+            <input type="number" id="guess-input" min="1" max="14" placeholder="??">
+            <button class="btn" onclick="checkGuess()">Buka 🎲</button>
+            <div id="game-hint"></div>
+        </div>
+
+        <!-- Surat Romantis yang Jauh Lebih Panjang -->
+        <div id="surat-cinta">
+            <p><b>Hai Cinta-ku, Sayangku, Semestaku... ❤️</b></p>
+            
+            <p>Selamat ulang tahun yang ke-14 ya, Cantik! Akhirnya hari yang aku tunggu-tunggu tiba juga. Di hari yang luar biasa spesial ini, aku mau meluangkan waktu sejenak buat menuliskan apa yang ada di dalam hatiku khusus buat kamu. Aku cuma mau bilang kalau aku bersyukur banget, bener-bener bersyukur kepada Tuhan karena telah menghadirkan kamu di dunia ini, dan yang paling penting, karena telah mempertemukan kamu dengan aku.</p>
+            
+            <p>Kamu tahu nggak? Menghabiskan hari-hari bareng kamu itu seperti keajaiban kecil yang selalu aku syukuri setiap malam sebelum tidur. Kamu itu bukan cuma sekadar pacar buat aku, tapi kamu adalah alasan di balik senyuman terbaikku, penyemangat paling ampuh saat aku lagi lelah, dan warna paling cerah di saat duniaku sedang terasa abu-abu. Setiap tawa kecil kamu, setiap pesan singkat dari kamu, bahkan hal-hal sepele yang kita obrolin, semuanya punya tempat tersendiri yang sangat istimewa di dalam hatiku.</p>
+            
+            <p>Meskipun hari ini usia kamu baru menginjak 14 tahun, aku selalu kagum melihat betapa dewasanya kamu, betapa baiknya hatimu, dan betapa tulusnya kamu dalam memperlakukan orang-orangan di sekitarmu, termasuk aku. Makasih banyak ya, Sayang, udah selalu sabar menghadapi aku, udah selalu ada buat memberikan support, dan nggak pernah bosan bikin aku ngerasa menjadi cowok paling beruntung di dunia ini karena bisa memilikimu.</p>
+            
+            <p>Harapan dan doa terbaikku di umur kamu yang baru ini, semoga kamu selalu diberikan kesehatan yang luar biasa, dilindungi di setiap jalan yang kamu pilih, dan kebahagiaan di hatimu nggak akan pernah luntur sedikit pun. Aku berdoa semoga semua impian besar kamu, cita-cita yang sering kamu bayangkan, dan hal-hal baik yang sedang kamu perjuangkan di sekolah maupun di hidupmu bisa tercapai dengan mudah dan penuh kelancaran. Jangan pernah berubah ya, tetaplah jadi Cinta yang ceria, manis, dan berhati lembut seperti yang aku kenal.</p>
+            
+            <p>Ingat ya, jalan di depan mungkin akan membawa banyak cerita baru, ada kalanya menyenangkan, dan mungkin ada kalanya terasa melelahkan karena tugas atau hal lainnya. Tapi aku mau kamu tahu satu hal: sesibuk apa pun aku, seberat apa pun hari-hari yang kita lalui nanti, aku berjanji akan selalu ada di sini. Aku akan selalu ada di sampingmu buat nemenin kamu berjuang, dengerin semua keluh kesahmu, merayakan setiap keberhasilanmu, dan memelukmu lewat doa-doa terbaikku.</p>
+            
+            <p>Terima kasih ya sudah lahir ke dunia ini, dan terima kasih sudah mengizinkan aku menjadi bagian dari perjalanan hidupmu. Aku sayang banget sama kamu, hari ini, esok, dan untuk seterusnya.</p>
+            
+            <p style="text-align: center; font-style: italic; font-weight: bold; color: #e84393; margin-top: 25px; text-indent: 0; line-height: 1.8;">
+                "Selamat ulang tahun ke-14, Sayangku, Cinta-ku. I love you more than words can ever express! 🎂🎈✨"
+            </p>
+        </div>
+    </div>
+
+    <script {timestamp="2026-05-18"}>
+        // Logika Slider Foto
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slider = document.getElementById('slider');
+
+        function showSlide(index) {
+            if (index >= totalSlides) currentSlide = 0;
+            else if (index < 0) currentSlide = totalSlides - 1;
+            else currentSlide = index;
+            slider.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+        }
+
+        function moveSlide(step) {
+            showSlide(currentSlide + step);
+        }
+
+        setInterval(() => { moveSlide(1); }, 4000);
+
+        // Logika Mini Game (Kunci jawaban: 14)
+        const targetNumber = 14; 
+
+        function checkGuess() {
+            const userInput = parseInt(document.getElementById("guess-input").value);
+            const hint = document.getElementById("game-hint");
+            const gameSection = document.getElementById("game-section");
+            const surat = document.getElementById("surat-cinta");
+
+            if (isNaN(userInput) || userInput < 1 || userInput > 14) {
+                hint.innerText = "Masukkan angka antara 1 sampai 14 dulu dong, Sayang! 🤭";
+                return;
+            }
+
+            if (userInput === targetNumber) {
+                hint.style.color = "#2ecc71";
+                hint.innerText = "YEAY BENER! 🎉 Angka 14, tepat di umurmu yang spesial hari ini! ❤️";
+                
+                setTimeout(() => {
+                    gameSection.style.display = "none"; 
+                    surat.style.display = "block"; 
+                    surat.scrollIntoView({ behavior: 'smooth' });
+                }, 1500);
+            } else if (userInput < targetNumber) {
+                hint.innerText = "Angkanya masih kekecilan, ayo naikin lagi! 😜";
+            } else {
+                hint.innerText = "Angkanya kebesaran, coba turunin dikit! 🤪";
+            }
+        }
+
+        // Efek hati berjatuhan
+        function createHearts() {
+            const heartIcons = ['❤️', '💖', '💝', '💕', '🌸'];
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = (Math.random() * 3 + 2) + 's'; 
+                    heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                    document.body.appendChild(heart);
+                    setTimeout(() => { heart.remove(); }, 5000);
+                }, i * 300);
+            }
+        }
+        setInterval(createHearts, 3000);
+        createHearts();
+    </script>
+
+</body>
+</html>
